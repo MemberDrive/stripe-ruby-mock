@@ -8,7 +8,7 @@ module StripeMock
       # - 'metadata["foo"]:"bar"'
       QUERYSTRING_PATTERN = /\A(?<field>[\w\.]+)(\[['"](?<metadata_key>[^'"]*)['"]\])?:['"]?(?<value>[^'"]*)['"]?\z/
       def search_results(all_values, querystring, fields: [], resource_name:)
-        values = all_values.dup
+        values = all_values.dup || []
         query_match = QUERYSTRING_PATTERN.match(querystring)
         raise Stripe::InvalidRequestError.new(
           'We were unable to parse your search query.' \
