@@ -179,7 +179,7 @@ module StripeMock
     end
 
     def self.mock_charge(params={})
-      charge_id = params[:id] || "ch_1fD6uiR9FAA2zc"
+      charge_id = params[:id] || "ch_#{SecureRandom.hex(6)}"
       currency = params[:currency] || StripeMock.default_currency
       {
         id: charge_id,
